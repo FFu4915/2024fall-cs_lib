@@ -6,23 +6,24 @@ Ascii表 chr(0),ord('A')
 
 dijiaslkdj
 
-import heapq
 
-def dijkstra(s,mat,e):#s,e分别是起点和终点.起点s=(0,x0,y0),终点e=(xe,ye).
-    MAXN=float('inf')
-    weight=[[MAXN]*len(mat[0]) for _ in range(len(mat))]
-    q=[s]
-    weight[s[1]][s[2]]=0
-    d=[(-1,0),(1,0),(0,-1),(0,1)]
-  
+
+    import heapq
+    
+    def dijkstra(s,mat,e):#s,e分别是起点和终点.起点s=(0,x0,y0),终点e=(xe,ye).
+        MAXN=float('inf')
+        weight=[[MAXN]*len(mat[0]) for _ in range(len(mat))]
+        q=[s]
+        weight[s[1]][s[2]]=0
+        d=[(-1,0),(1,0),(0,-1),(0,1)]
     #开始bfs
     while q:
         w,x,y=heapq.heappop(q)
-  
+      
         #先处理到终点的情况
         if (x,y)==e:
             return weight[x][y]
-  
+      
         #然后探路
         for dx,dy in d:
             nx,ny=x+dx,y+dy
@@ -31,11 +32,14 @@ def dijkstra(s,mat,e):#s,e分别是起点和终点.起点s=(0,x0,y0),终点e=(xe
                 if new_w<weight[nx][ny]:
                     weight[nx][ny]=new_w
                     heapq.heappush(q,(new_w,nx,ny))
-
+    
     return -1
 
 欧拉筛
 
+
+
+```
 def euler(n):
     origen=set(range(2,n+1))
     primes=[]
@@ -52,12 +56,10 @@ def euler(n):
     return not_primes
 
 not_primes=euler(1000000)
-
-
+```
 
 
 深拷贝
-
 
   from copy import deepcopy
 a=[1,2,3]
@@ -66,10 +68,9 @@ c=[[1,2],[2,3],[3,4]]
 d=c[:]
 e=deepcopy(c)
 
-
 dfs
 
-
+```
 def dfs(x,y):
     d=[(-1,-1),(-1,0),(-1,1),(0,-1),(0,1),(1,-1),(1,0),(1,1)]
     for dx,dy in d:
@@ -79,9 +80,13 @@ def dfs(x,y):
                 mat[x][y]=0
                 dfs(nx,ny)
                 mat[x][y]=1
+```
+
+
 
 bfs
 
+```
 from collections import deque
 def bfs(x0,y0,mat):
     q=deque([(x0,y0)])
@@ -94,10 +99,15 @@ def bfs(x0,y0,mat):
             nx,ny=x+dx,y+dy
             if 0<=nx<len(mat) and 0<=ny<len(mat[0]) and mat[nx][ny]==1:
                 q.append((nx,ny))
+```
+
+
 
 
 
 二分
+
+```
 lo,hi=0,len(a)
 while lo < hi:
 	mid = (lo + hi) // 2
@@ -105,6 +115,7 @@ while lo < hi:
         lo = mid + 1
     else:
         hi = mid
+```
 
 
 
@@ -118,6 +129,9 @@ while lo < hi:
 
 mergesort
 
+
+
+```
 def merge_sort(arr):
     if len(arr) <= 1:
         return arr
@@ -153,7 +167,5 @@ data = [4, 2, 7, 1, 3]
 sorted_data = merge_sort(data)
 print("归并排序结果：", sorted_data)
 
+```
 
-
-
-  
